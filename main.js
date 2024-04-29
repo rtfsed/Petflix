@@ -298,7 +298,7 @@ eyeicon.onclick = function(){
 
 
 function addSlash(input) {
-  var value = input.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
+  var value = input.value.replace(/\D/g, '');
   var formattedValue = '';
   if (value.length > 2) {
     formattedValue += value.substr(0, 2) + '/';
