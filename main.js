@@ -316,7 +316,7 @@ localStorage.setItem('zaplatil',true);
 }
 
 function xz(n){
-  if(localStorage.getItem('loginEst')=='true'){
+  if(localStorage.getItem('loginEst')=='true'||true){
     localStorage.setItem('deneg',n);
     window.location.href = "bank.html";
   }
