@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <style>
+        
+    </style>
+    <title>Document</title>
+</head>
+<body >
+    <header>
+        <a class="red-p" href="index.html">Petflix</a>
+        <nav>
+            <ul>
+                <a href="price.html">Lista dei prezzi</a>
+                <div class="form"> 
+                    <a id="signupLink" onclick="regist()">Registrati</a>
+                    <a id="loginLink" onclick="login()">Accedi</a>
+                </div>
+                <div class="user">
+                    <span id="userna"></span>
+                    <span class="account-icon" onclick="toggleDropdown()">⚙️</span>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <span onclick="logOut()">Esci</span>
+                    </div>
+                </div>
+            </ul>   
+        </nav>
+    </header>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modalTitle">Registrazione</h2>
+          <form id="form" action="#" method="POST" onsubmit="return validatePassword()">
+            
+            <div class="form-group">
+              <label for="username">Nome utente:</label>
+              <input type="text" oninput="validLogin(event)" id="username" autocomplete="current-password" name="name" required title="pucl">
+              <p class="est" style="display: none; color: rgb(126, 1, 1);">Questo soprannome esiste già</p>
+              <p class="net" style="display: none; color: rgb(46, 255, 46);">Ok</p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <div class="input-box">
+              <input type="password" oninput="validPass(event)" autocomplete="current-password" id="password" name="password" required>
+              <img src="./eye-close.png" alt="" id="eyeicon">
+            </div>
+            <div class="passvalid" style="display: block; color: aliceblue;">
+              <p>La password deve avere:</p>
+              <ul>
+                <li>Minimo 8 caratteri 
+                    <span class="prov" id="netcar" style="display: none;">&#10060;</span> <span class="prov" style="display: none;" id="dacar">&#10004;&#65039;</span>
+                </li>
+                <li>
+                    Una o più lettere maiuscole e miniscola
+                    <span class="prov" id="netmai" style="display: none;">&#10060;</span> <span class="prov" style="display: none;" id="damai">&#10004;&#65039;</span>
+                </li>
+                <li>
+                    Hanno anche dei numeri
+                    <span class="prov" id="netnum"style="display: none;">&#10060;</span> <span class="prov" id="danum"style="display: none;">&#10004;&#65039;</span>
+                </li>
+                <li>
+                    Non dovrebbero esserci spazi
+                    <span class="prov" id="netspa"style="display: none;">&#10060;</span> <span class="prov" id="daspa"style="display: none;">&#10004;&#65039;</span>
+                </li>
+              </ul>
+            </div>
+            </div>
+            <span id="swit" style="color:aliceblue; font-size: 12px;">Lorem ipsum dolor sit amet</span>
+            <a id="link" href="#" style="color:black; font-size: 12px;" >pup</a>
+            <button id="submitButton" type="submit">Registrazione</button>
+          </form>
+        </div>
+      </div>
+      <div class="conteaner">
+        <div class="bank">
+            <form name="cardForm" method="post" action="bank.html" onsubmit="zaplatil()" >
+              <h2 id="pay"><b>PAYMENT INFORMATION</b></h2>
+              
+              <p>
+                Card Number<span>*</span>
+                <input type="text" name="card_number" id="card_number" maxlength="16" required pattern="[0-9]{13,16}" 
+                       oninvalid="this.setCustomValidity('Add correct card data here with correct length')"
+                       oninput="this.setCustomValidity('')" inputmode="numeric" placeholder="XXXXXXXXXXXXXXXX"/>
+              </p>
+              <p>
+                Card Expiry Date<span>*</span>
+                <input type="text" name="Expiry_date" id="Expiry_date" required maxlength="5" pattern="(0[1-9]|1[0-9])\/\d{2}"
+                       oninvalid="this.setCustomValidity('Please enter the date in format MM/YY')"
+                       oninput="this.setCustomValidity('')" autocomplete="username" placeholder="MM/YY" onkeyup="addSlash(this)"/>
+              </p>
+              <p>
+                CVV<span>*</span>
+                <input type="password" name="CVV" id="CVV" maxlength="3" required pattern="[0-9]{3}"
+                       oninvalid="this.setCustomValidity('CVV needs to be 3 numbers long, no letters')"
+                       oninput="this.setCustomValidity('')" autocomplete="current-password" placeholder="XXX"/>
+              </p>
+              <input class="btn"  type="submit" value="Pagare 9.99€" />
+            </form>
+          </div>
+        </div>
+        
+          <div id="loading-overlay">
+            <div id="loading-window">
+              <div class="lds-dual-ring"></div>
+              <div id="loading-text">Pagamento...</div>
+              <div id="checkmark">&#10004;</div>
+              <div id="completion-text">Il pagamento è andato a buon fine</div>
+            </div>
+          </div>
+</body>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petflix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+</head>
+<body>
+    
+    <header>
+        
+        <a class="red-p" href="index.html">Petflix</a>
+        <nav>
+            <ul>
+                <a href="price.html" id="list">Lista dei prezzi</a>
+ 
+                <div class="form"> 
+                    <a id="signupLink" onclick="regist()">Registrati</a>
+                    <a id="loginLink" onclick="login()">Accedi</a>
+                </div>
+                <div class="user">
+                    <span id="userna"></span>
+                    <span class="account-icon" onclick="toggleDropdown()">⚙️</span>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <span onclick="logOut()">Esci</span>
+                    </div>
+                </div>
+            </ul>   
+        </nav>
+        
+    </header>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modalTitle">Registrazione</h2>
+          <form id="form" action="#" method="POST" onsubmit="return validatePassword()">
+            
+            <div class="form-group">
+              <label for="username">Nome utente:</label>
+              <input type="text" oninput="validLogin(event)" id="username" autocomplete="current-password" name="name" required title="pucl">
+              <p class="est" style="display: none; color: rgb(126, 1, 1);">Questo soprannome esiste già</p>
+              <p class="net" style="display: none; color: rgb(46, 255, 46);">Ok</p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <div class="input-box">
+              <input type="password" oninput="validPass(event)" id="password" autocomplete="current-password" name="password" required>
+              <img src="./eye-close.png" alt="" id="eyeicon">
+            </div>
+            <div class="passvalid" style="display: block; color: aliceblue;">
+              <p>La password deve avere:</p>
+              <ul>
+                <li>Minimo 8 caratteri 
+                    <span class="prov" id="netcar" style="display: none;">&#10060;</span> <span class="prov" style="display: none;" id="dacar">&#10004;&#65039;</span>
+                </li>
+                <li>
+                    Una o più lettere maiuscole e miniscola
+                    <span class="prov" id="netmai" style="display: none;">&#10060;</span> <span class="prov" style="display: none;" id="damai">&#10004;&#65039;</span>
+                </li>
+                <li>
+                    Hanno anche dei numeri
+                    <span class="prov" id="netnum"style="display: none;">&#10060;</span> <span class="prov" id="danum"style="display: none;">&#10004;&#65039;</span>
+                </li>
+                <li>
+                    Non dovrebbero esserci spazi
+                    <span class="prov" id="netspa"style="display: none;">&#10060;</span> <span class="prov" id="daspa"style="display: none;">&#10004;&#65039;</span>
+                </li>
+              </ul>
+            </div>
+            </div>
+            <span id="swit" style="color:aliceblue; font-size: 12px;">Lorem ipsum dolor sit amet</span>
+            <a id="link" href="#" style="color:black; font-size: 12px;" >pup</a>
+            <button id="submitButton" type="submit">Registrazione</button>
+          </form>
+        </div>
+      </div>
+    <aside>
+        <p class="title">Filtri</p>
+        
+        <div class="filter-container">
+            <p id="ac" onclick='clearAll()'>Cancella tutto</p>
+            <label class="word"><input value="Films" type="checkbox" onchange="filterContent()"> Film</label>
+            <label class="word"><input value="Cartoons" type="checkbox" onchange="filterContent()"> Cartoni animati</label>
+            <select id="year" name="year" onchange="filterContent()">
+                <option value="ALL">TUTTI</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+    </aside>
+    <main>
+        <div class="movie" data-name="DoG" data-type="Films" data-year="2022">
+        <img class="image1 films" src="film1.jpg" alt="Film 1" />
+        <p class="name">DoG</p>
+        <div class="text">
+        <p>Marine Briggs deve consegnare un cane guida di nome Lulu in California. Il compito si rivela complicato.
+         Un viaggio leggero lungo la costa del Pacifico si trasforma in un viaggio infernale, dove non è chiaro chi trasporta chi.
+        </p>
+        <p class="onwatch"  >acquistare un abbonamento per guardare</p>
+        <p class="watch">hahaha no!</p>
+    </div>
+        </div>
+        <div class="movie" data-name="Adventure Time" data-type="Cartoons" data-year="2016">
+        <img class="image2 cartoon" src="cartoon1.jpg" alt="Cartoon 1" />
+        <p class="name" style="white-space: nowrap;" >Adventure Time</p>
+        <div class="text">
+        <p>Adventure Time" è una serie animata che racconta le avventure di un ragazzo,
+         Finn, e del suo amico, un cane magico, un bulldog inglese, Jake, in un mondo post-apocalittico chiamato "Land of Ooo"</p>
+         <p class="onwatch"  >acquistare un abbonamento per guardare</p>
+        <p class="watch">hahaha no!</p>
+    </div>
+        </div>
+        <div class="movie" data-name="Dong" data-type="Films" data-year="2017">
+        <img class="image3 films" src="film2.jpg" alt="Film 2" />
+        <p class="name" style="position: relative;top: -110px;">Dong</p>
+        <div class="text">
+        <p>Una squadra di scienziati, militari e avventurieri finisce su un'isola sconosciuta nell'Oceano Pacifico. 
+        Invadono il dominio del potente Dong e scatenano così una battaglia tra uomo e natura.
+        Ben presto la missione di ricerca si trasforma in un gioco di sopravvivenza,i suoi partecipanti sono costretti a farsi letteralmente strada verso la salvezza.</p>
+        <p class="onwatch"  >acquistare un abbonamento per guardare</p>
+        <p class="watch">hahaha no!</p>
+    </div>   
+    </div>
+        <div class="movie" data-name="Dug Days" data-type="Cartoons" data-year="2021" >
+        <img class="image4 cartoon" src="cartoon2.jpg" alt="Cartoon 2" />
+        <p class="name" style="white-space: nowrap; top: -120px;">Dug Days</p>
+        <div class="text">
+        <p>"Dug Days" dei Pixar Animation Studios è una serie di cortometraggi che segue le divertenti disavventure di Dug, l'adorabile cane di "Up" della Disney e della Pixar.
+         Ogni cortometraggio presenta eventi quotidiani che accadono nel cortile di Dug, il tutto attraverso gli occhi emozionanti (e leggermente distorti) del nostro cane parlante preferito.</p>
+         <p class="onwatch"  >acquistare un abbonamento per guardare</p>
+         <p class="watch">hahaha no!</p>
+     </div>
+        </div>
+        <div class="movie" data-name="Pet sematary" data-type="Films" data-year="2019">
+        <img class="image5 films" src="film3.jpg" alt="Film 3" />
+        <p class="name" style="white-space: nowrap; top: -120px;">Pet sematary</p>
+        <div class="text">
+        <p>La famiglia di Louis Creed si trasferisce in una casa rurale che, a quanto pare, si trova vicino al cupo Pet Sematary.
+         È qui che Louis seppellisce il gatto, l'animale domestico della famiglia, morto sotto le ruote di un camion.
+         Questa morte comporta una serie di eventi mostruosi che dimostrano al Credo che i morti devono rimanere morti...</p>
+         <p class="onwatch"  >acquistare un abbonamento per guardare</p>
+         <p class="watch">hahaha no!</p>
+     </div>
+        </div>
+        <div class="movie" data-name="Pets united" data-type="Cartoons" data-year="2019">
+            <img class="image6 cartoon" src="cartoon3.jpg" alt="Cartoon 3" /> 
+            <p class="name" style="white-space: nowrap; position: relative; top: -110px;">Pets united</p>
+            <div class="text">
+            <p>Nella metropoli ultramoderna e confortevole di Robo City regna sempre ordine e tranquillità, perché i robot vegliano su di essa.
+                 Sono i principali aiutanti delle persone e dei loro animali domestici.
+                 L'unico piantagrane è il locale "Robin Hood", il cane randagio Roger, che ruba il cibo agli animali ricchi e viziati e lo distribuisce ai senzatetto.</p>
+                 <p class="onwatch"  >acquistare un abbonamento per guardare</p>
+                 <p class="watch">hahaha no!</p>
+             </div>
+                </div>
+        </main>
+
+        
+        
+    
+        <script src="main.js"></script>
+    </body>
+    </html>
